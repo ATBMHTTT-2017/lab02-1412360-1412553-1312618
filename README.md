@@ -18,8 +18,8 @@ Yêu cầu **GIT**
 * [ ] Sử dụng GIT theo Gitflow Workflow.
 
 Yêu cầu **bắt buộc**
-* [x] Viết script tạo cấu trúc cơ sở dữ liệu (**1312618-1412553**)
-* [x] Viết script thêm dữ liệu (**1312618-1412553**)
+* [x] Viết script tạo cấu trúc cơ sở dữ liệu (****)
+* [x] Viết script thêm dữ liệu (****)
 * [ ] Tạo tài khoản cho các nhân viên trong bảng Nhân Viên. Tên tài khoản trùng với mã nhân viên. Tạo ít nhất 5 tài khoản cho mỗi vị trí: trưởng dự án, trưởng phòng, trưởng chi nhánh, nhân viên, giám đốc và ít nhất 5 dòng cho các bảng dữ liệu còn lại. (**MSSV**)
 * [ ] Tạo các role cho các vị trí phù hợp cho công ty. (**MSSV**)
 * [ ] Giải pháp mã hóa thông tin lương để chỉ nhân viên được phép xem lương của mình. (**MSSV**)
