@@ -29,7 +29,7 @@ create table PhongBan_1312618_1412553(
   tenphong nvarchar2(50),
   truongPhong char(5),
   ngayNhanChuc date,
-  soNhanVien_1312618_1412553 int,
+  soNhanVien int,
   chiNhanh int
 );
 
