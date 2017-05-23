@@ -4,7 +4,7 @@
 
 Thành viên:
 * [x] **1312618** Nguyễn Thanh Trà (tên tài khoản github: traithcmus)
-* [x] **1412553** Dương Minh Toàn (tên tài khoản github: tqhb1995)
+* [x] **1412553** Dương Minh Toàn (tên tài khoản github:  tqhb1995)
 * [ ] **MSSV3** Tên sinh viên 2 (tên tài khoản github)
 
 ## Yêu cầu
