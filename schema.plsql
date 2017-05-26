@@ -29,7 +29,7 @@ create table PhongBan_1312618_1412553(
   tenphong nvarchar2(50),
   truongPhong char(5),
   ngayNhanChuc date,
-  soNhanVien_1312618_1412553 int,
+  soNhanVien int,
   chiNhanh int
 );
 
@@ -131,6 +131,7 @@ insert all
 select* from dual;
 
 insert all
+  into NhanVien_1312618_1412553(maNV, hoTen, diaChi, dienThoai, email, luong) values ('nv_00', N'Nguyễn Văn Tina', N'Campuchia', '01234567890', 'nvtina@gmail.com', 1000000);
   into NhanVien_1312618_1412553 values ('nv_01', N'Nguyễn Văn A', N'Đăk Nông', '0984898562', 'nva@gmail.com', 1, 1, 400000)
   into NhanVien_1312618_1412553 values ('nv_02', N'Nguyễn Văn B', N'Đăk Nông', '0981231212', 'nvb@gmail.com', 2, 2, 600000)
   into NhanVien_1312618_1412553 values ('nv_03', N'Trần Thị C', N'Đăk Nông', '0164554545', 'ttc@gmail.com', 3, 3, 700000)
