@@ -24,7 +24,7 @@ Yêu cầu **bắt buộc**
 * [ ] Tạo các role cho các vị trí phù hợp cho công ty. (**MSSV**)
 * [ ] Giải pháp mã hóa thông tin lương để chỉ nhân viên được phép xem lương của mình. (**MSSV**)
 * [ ] Xây dựng giải pháp để nhân viên và trưởng dự án xác định thông tin lương có đúng là do trưởng dự án thiết lập không. (**MSSV**)
-* [ ] Chỉ trưởng dự án được phép xem và cập nhật thông tin chi tiêu của dự án của mình. (**MSSV**)
+* [x] Chỉ trưởng dự án được phép xem và cập nhật thông tin chi tiêu của dự án của mình. (**1412553**)
 * [ ] Xây dựng giải pháp cho phép trưởng dự án mã hóa thông tin chi tiêu của dự án của mình và chỉ cho phép một số người dùng nhất định giải mã thông tin này. (**MSSV**)
 
 Liệt kê các **yêu cầu nâng cao** đã thực hiện:
