@@ -221,5 +221,232 @@ set truongChiNhanh = 'nv_06' where maCN = 6;
 
 
 
+-- update by Thanh Tra - 1312618
+
+create table NhanVien_1312618_1412553(
+  maNV char(9) primary key,
+  hoTen nvarchar2(50) not null,
+  diaChi nvarchar2(100),
+  dienThoai char(11),
+  email varchar2(20),
+  maPhong int,
+  chiNhanh int,
+  luong int
+);
+
+create table ChiNhanh_1312618_1412553(
+  maCN int primary key,
+  tenCN nvarchar2(50),
+  truongChiNhanh char(9)
+);
+
+create table PhongBan_1312618_1412553(
+  maPhong int primary key,
+  tenphong nvarchar2(50),
+  truongPhong char(9),
+  ngayNhanChuc date,
+  soNhanVien int,
+  chiNhanh int
+);
+
+create table DuAn_1312618_1412553(
+  maDA int primary key,
+  tenDA nvarchar2(50),
+  kinhPhi int,
+  phongChuTri int,
+  truongDA char(9)
+);
+
+create table ChiTieu_1312618_1412553(
+  maChiTieu int primary key,
+  tenChiTieu nvarchar2(100),
+  soTien int,
+  duAn int
+);
+
+create table PhanCong_1312618_1412553(
+  maNV char(9),
+  duAn int,
+  vaiTro nvarchar2(50),
+  phuCap int,
+  primary key (maNV, duAn)
+);
+
+-- Create foreign key --
+
+	alter table NhanVien_1312618_1412553
+	add constraint fk_NhanVien_phongban
+	foreign key (maPhong)
+	references PhongBan_1312618_1412553(maPhong);
+  
+  alter table NhanVien_1312618_1412553
+	add	constraint fk_NhanVien_chinhanh
+	foreign key (chiNhanh)
+	references ChiNhanh_1312618_1412553(maCN);
+
+	alter table PhongBan_1312618_1412553
+	add constraint fk_phongban_chinhanh
+	foreign key (chiNhanh)
+	references ChiNhanh_1312618_1412553(maCN);
+  
+  alter table PhongBan_1312618_1412553
+	add	constraint fk_phongban_NhanVien
+	foreign key (truongPhong)
+	references NhanVien_1312618_1412553(maNV);
+
+	alter table ChiNhanh_1312618_1412553
+	add constraint fk_chinhanh_NhanVien
+	foreign key (truongChiNhanh)
+	references NhanVien_1312618_1412553(maNV);
+
+	alter table DuAn_1312618_1412553
+	add constraint fk_duan_phongban
+	foreign key (phongChuTri)
+	references PhongBan_1312618_1412553(maPhong);
+  
+  alter table DuAn_1312618_1412553
+	add	constraint fk_duan_NhanVien
+	foreign key (truongDA)
+	references NhanVien_1312618_1412553(maNV);
+
+	alter table ChiTieu_1312618_1412553
+	add constraint fk_chitieu_duan
+	foreign key (duAn)
+	references DuAn_1312618_1412553(maDA);
+
+	alter table PhanCong_1312618_1412553
+	add constraint fk_phancong_NhanVien
+	foreign key (maNV)
+	references NhanVien_1312618_1412553(maNV);
+  
+  alter table PhanCong_1312618_1412553
+	add	constraint fk_phancong_duan
+	foreign key (duAn)
+	references DuAn_1312618_1412553(maDA);
+
+--insert data
+
+
+insert all
+  INTO ChiNhanh_1312618_1412553 values (1, N'Dak Nong', null)
+  INTO ChiNhanh_1312618_1412553 values (2, N'Binh Phuoc', null)
+  INTO ChiNhanh_1312618_1412553 values (3, N'Dak Lak', null)
+  INTO ChiNhanh_1312618_1412553 values (4, N'Gia Lai', null)
+  INTO ChiNhanh_1312618_1412553 values (5, N'Binh Duong', null)
+  INTO ChiNhanh_1312618_1412553 values (6, N'Khanh Hoa', null)
+select* from dual;
+
+
+insert all
+
+  into PhongBan_1312618_1412553 values (1, N'Tai chinh', null, null, 0, 1) 
+  into PhongBan_1312618_1412553 values (2, N'Dao tao', null, null, 0, 2)
+  into PhongBan_1312618_1412553 values (3, N'Dich vu', null, null, 0, 3)
+  into PhongBan_1312618_1412553 values (4, N'Ke hoach', null, null, 0, 4)
+  into PhongBan_1312618_1412553 values (5, N'Quan ly', null, null, 0, 5)
+  into PhongBan_1312618_1412553 values (6, N'Quy hoach', null, null, 0, 6)
+select* from dual;
+
+
+insert all  
+  into NhanVien_1312618_1412553 values ('nv_01', N'Nguyen Van A', N'Dak Nong', '0984898562', 'nva@gmail.com', 1, 1, 400000)
+  into NhanVien_1312618_1412553 values ('nv_02', N'Nguyen Van B', N'Dak Nong', '0981231212', 'nvb@gmail.com', 2, 2, 600000)
+  into NhanVien_1312618_1412553 values ('nv_03', N'Tran Thi C', N'Dak Nong', '0164554545', 'ttc@gmail.com', 3, 3, 700000)
+  into NhanVien_1312618_1412553 values ('nv_04', N'Cao Van B', N'Dak Nong', '0164123456', 'cvb@gmail.com', 4, 4, 800000)
+  into NhanVien_1312618_1412553 values ('nv_05', N'Dang Thi Da Ly', N'Dak Nong', '0164147895', 'dtdl@gmail.com', 5, 5, 900000)
+  into NhanVien_1312618_1412553 values ('tda_01', N'Đang Van Hieu', N'Dak Nong', '0164101234', 'dvh@gmail.com', 6, 6, 100000)
+  into NhanVien_1312618_1412553 values ('tda_02', N'Pham Van Tien', N'Dak Nong', '0164178956', 'adsfd@gmail.com', 2, 2, 200000)
+  into NhanVien_1312618_1412553 values ('tda_03', N'Tran Ha', N'Dak Nong', '0164132105', 'agewd@gmail.com', 4, 4, 50000)
+  into NhanVien_1312618_1412553 values ('tda_04', N'Nguyen Thi Thuy An', N'Binh Phuoc', '0164178965', 'wqegsdsa@gmail.com', 3, 3, 500000)
+  into NhanVien_1312618_1412553 values ('tda_05', N'Doan Du', N'Binh Phuoc', '0164178956', 'hrefasedf@gmail.com', 5, 5, 50000)
+  into NhanVien_1312618_1412553 values ('tp_01', N'Nguyen Thanh Tra', N'Binh Phuoc', '0164112345', 'awefd@gmail.com', 6, 6, 20000)
+  into NhanVien_1312618_1412553 values ('tp_02', N'Nguyen yen Nhi', N'Binh Phuoc', '0164101234', 'lfuc@gmail.com', 1, 1, 800000)
+  into NhanVien_1312618_1412553 values ('tp_03', N'Truong Phong', N'Binh Phuoc', '0164178965', 'gweafd@gmail.com', 4, 4, 30000)
+  into NhanVien_1312618_1412553 values ('tp_04', N'Nguyen Dai', N'Binh Duong', '09564012345', 'gqawefds@gmail.com', 1, 1, 300000)
+  into NhanVien_1312618_1412553 values ('tp_05', N'Tran Ngoc', N'Binh Duong', '0956445689', 'gawefsdc@gmail.com', 6, 6, 50000)
+  into NhanVien_1312618_1412553 values ('tcn_01', N'Truong Dinh', N'Binh Duong', '0956401236', 'gqawed@gmail.com', 3, 3, 60000)
+  into NhanVien_1312618_1412553 values ('tcn_02', N'Truong Sang', N'Binh Duong', '0956447895', 'awvesd@gmai.com', 5, 5, 700000)
+  into NhanVien_1312618_1412553 values ('tcn_03', N'Hoai Linh', N'Binh Duong', '0956423568', 'awvesd@gmail.com', 1, 1, 100000)
+  into NhanVien_1312618_1412553 values ('tcn_04', N'Chi Tai', N'Binh Duong', '0956445678', 'gqawevsd@gmail.com', 3, 3, 400000)
+  into NhanVien_1312618_1412553 values ('tcn_05', N'Đam Vinh Hung', N'Binh Duong', '0956498756', 'qgawesd@gmail.com', 3, 3, 200000)
+  
+  into NhanVien_1312618_1412553 values ('gd_01', N'Cao Thi Thuy', N'Binh Duong', '0956498756', 'qgawesd@gmail.com', 3, 3, 100000000)
+  into NhanVien_1312618_1412553 values ('gd_02', N'Nguyen Van C', N'Ha Noi', '0956494778', 'qgawd@gmail.com', 1, 1, 2000000)
+  into NhanVien_1312618_1412553 values ('gd_03', N'Truong Cao', N'Ha Noi', '0956123459', 'qgawesfdfd@gmail.com', 4, 4, 60000000)
+  into NhanVien_1312618_1412553 values ('gd_04', N'Tran Thi D', N'Ha Noi', '0956989452', 'qgsd@gmail.com', 6, 6, 70000000)
+  into NhanVien_1312618_1412553 values ('gd_05', N'Dang Thi N', N'Ha Noi', '095640889', 'qgawe@gmail.com', 4, 4, 20000000)
+select* from dual;
+
+
+insert all
+  into DuAn_1312618_1412553 values (1, N'Du an A', 10000000, 1, 'nv_01')
+  into DuAn_1312618_1412553 values (2, N'Du an B', 20000000, 2, 'nv_02')
+  into DuAn_1312618_1412553 values (3, N'Du an C', 30000000, 3, 'gd_01')
+  into DuAn_1312618_1412553 values (4, N'Du an D', 40000000, 4, 'tcn_04')
+  into DuAn_1312618_1412553 values (5, N'Du an E', 50000000, 5, 'tcn_02')
+select* from dual;
+
+
+
+insert all
+  into ChiTieu_1312618_1412553 values (1, N'The thao', 100000, 3)
+  into ChiTieu_1312618_1412553 values (2, N'Van nghe', 500000, 2)
+  into ChiTieu_1312618_1412553 values (3, N'Trang thiet bi', 5000000, 1)
+  into ChiTieu_1312618_1412553 values (4, N'Nhan cong', 300000, 4)
+  into ChiTieu_1312618_1412553 values (5, N'Du lich', 1000000, 5)
+  select* from dual;
+  
+insert all
+  into PhanCong_1312618_1412553 values ('nv_03', 1, N'Cong nhan', 20000)
+  into PhanCong_1312618_1412553 values ('nv_04', 1, N'Giam doc', 10000)
+  into PhanCong_1312618_1412553 values ('gd_01', 1, N'Truong phong', 20000)
+  into PhanCong_1312618_1412553 values ('tda_04', 1, N'Truong chi nhanh', 50000)
+  into PhanCong_1312618_1412553 values ('tp_01', 1, N'Truong du an', 60000)
+select* from dual;
+
+
+--update  PhongBan_1312618_1412553 và ChiNhanh_1312618_1412553
+
+update PhongBan_1312618_1412553
+set truongPhong = 'nv_01', ngayNhanChuc = to_date('1/2/2017', 'DD/MM/YYYY') where maPhong = 1;
+
+update PhongBan_1312618_1412553
+set truongPhong = 'nv_02', ngayNhanChuc = to_date('3/2/2017', 'DD/MM/YYYY') where maPhong = 2;
+
+update PhongBan_1312618_1412553
+set truongPhong = 'gd_01', ngayNhanChuc = to_date('3/4/2017', 'DD/MM/YYYY') where maPhong = 3;
+
+update PhongBan_1312618_1412553
+set truongPhong = 'tda_02', ngayNhanChuc = to_date('1/4/2017', 'DD/MM/YYYY') where maPhong = 4;
+
+update PhongBan_1312618_1412553
+set truongPhong = 'nv_03', ngayNhanChuc = to_date('2/1/2017', 'DD/MM/YYYY') where maPhong = 5;
+
+update PhongBan_1312618_1412553
+set truongPhong = 'tp_02', ngayNhanChuc = to_date('1/1/2017', 'DD/MM/YYYY') where maPhong = 6;
+
+-- update ChiNhanh_1312618_1412553
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'nv_01' where maCN = 1;
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'nv_02' where maCN = 2;
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'nv_03' where maCN = 3;
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'nv_04' where maCN = 4;
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'nv_05' where maCN = 5;
+
+update ChiNhanh_1312618_1412553
+set truongChiNhanh = 'tp_01' where maCN = 6;
+
+
+
+
 
 
