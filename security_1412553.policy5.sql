@@ -14,7 +14,7 @@ create table NhanVien(
 			  pubkey char(9)
 			);
 
--- stored procedure dùng để insert NHANVIEN
+-- stored procedure dùng để insert NHANVIEN-----
 go
 IF OBJECT_ID('SP_INS_PUBLIC_NHANVIEN') IS NOT NULL
     DROP PROCEDURE SP_INS_PUBLIC_NHANVIEN;
