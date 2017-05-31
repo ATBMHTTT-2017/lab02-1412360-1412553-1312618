@@ -10,7 +10,7 @@ create table NhanVien(
 			  email varchar2(20),
 			  maPhong int,
 			  chiNhanh int,
-        luong binary_float,
+        		luong binary_float
 			);
       
 
