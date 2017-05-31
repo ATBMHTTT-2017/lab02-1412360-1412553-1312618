@@ -1,12 +1,12 @@
 ----edit---------
-
+--Tạo package chứa hai hàm cho việc mã hóa dữ liệu và giải mã.
 CREATE OR REPLACE PACKAGE enc_dec
 AS
    FUNCTION encrypt (p_plainText VARCHAR2, p_key in number) RETURN RAW DETERMINISTIC;
    FUNCTION decrypt (p_encryptedText RAW, p_key in number) RETURN number DETERMINISTIC;
 END;
 /
-
+--Viết hàm mã hóa và giải mã...
 CREATE OR REPLACE PACKAGE BODY enc_dec
 AS
      encryption_type    PLS_INTEGER := DBMS_CRYPTO.ENCRYPT_DES
@@ -43,5 +43,8 @@ AS
      END decrypt;
 END enc_dec;
 /
+
+
+
 grant execute on enc_dec to BT12;
 create public synonym enc_dec for sys.enc_dec;
